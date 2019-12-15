@@ -32,14 +32,14 @@ check-error 'Make sure that python.exe is in the PATH. (e.g. cp /usr/bin/python2
 
 
 if [[ "$IS64" == "1" ]]; then
-	MSBuild.exe freetype/freetypevc10.sln /t:Build /p:Configuration="Release Multithreaded" /p:Platform=x64
+	MSBuild.exe freetype/freetypevc10.sln -t:Build -p:Configuration="Release Multithreaded" -p:Platform=x64
 	check-error 'Error compiling freetype'
-	MSBuild.exe freetype/freetypevc10.sln /t:Build /p:Configuration="Debug Multithreaded" /p:Platform=x64
+	MSBuild.exe freetype/freetypevc10.sln -t:Build -p:Configuration="Debug Multithreaded" -p:Platform=x64
 	check-error 'Error compiling freetype'
 else
-	MSBuild.exe freetype/freetypevc10.sln /t:Build /p:Configuration="Release Multithreaded" /p:Platform=Win32
+	MSBuild.exe freetype/freetypevc10.sln -t:Build -p:Configuration="Release Multithreaded" -p:Platform=Win32
 	check-error 'Error compiling freetype'
-	MSBuild.exe freetype/freetypevc10.sln /t:Build /p:Configuration="Debug Multithreaded" /p:Platform=Win32
+	MSBuild.exe freetype/freetypevc10.sln -t:Build -p:Configuration="Debug Multithreaded" -p:Platform=Win32
 	check-error 'Error compiling freetype'
 fi
 
@@ -56,10 +56,10 @@ cd ..
 
 if [[ "$IS64" == "1" ]]; then
 	if [ ! -f tools/mhmake/Release64/mhmake.exe ]; then
-		MSBuild.exe tools/mhmake/mhmakevc10.sln /t:Build /p:Configuration=Release /p:Platform=x64
+		MSBuild.exe tools/mhmake/mhmakevc10.sln -t:Build -p:Configuration=Release -p:Platform=x64
 		check-error 'Error compiling mhmake for release'
 
-		MSBuild.exe tools/mhmake/mhmakevc10.sln /t:Build /p:Configuration=Debug /p:Platform=x64
+		MSBuild.exe tools/mhmake/mhmakevc10.sln -t:Build -p:Configuration=Debug -p:Platform=x64
 		check-error 'Error compiling mhmake for debug'
 	fi
 	export MHMAKECONF=`cygpath -da .`
@@ -74,10 +74,10 @@ if [[ "$IS64" == "1" ]]; then
 	./packageall.bat nox86
 else
 	if [ ! -f tools/mhmake/Release/mhmake.exe ]; then
-		MSBuild.exe tools/mhmake/mhmakevc10.sln /t:Build /p:Configuration=Release /p:Platform=Win32
+		MSBuild.exe tools/mhmake/mhmakevc10.sln -t:Build -p:Configuration=Release -p:Platform=Win32
 		check-error 'Error compiling mhmake for release'
 
-		MSBuild.exe tools/mhmake/mhmakevc10.sln /t:Build /p:Configuration=Debug /p:Platform=Win32
+		MSBuild.exe tools/mhmake/mhmakevc10.sln -t:Build -p:Configuration=Debug -p:Platform=Win32
 		check-error 'Error compiling mhmake for debug'
 	fi
 	export MHMAKECONF=`cygpath -da .`

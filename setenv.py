@@ -32,6 +32,10 @@ def escapepath(val):
       tmp[path]=1
       path=path.replace("c:","/c")
       path=path.replace("C:","/c")
+      path=path.replace("d:","/d")
+      path=path.replace("D:","/d")
+      path=path.replace("f:","/f")
+      path=path.replace("F:","/f")
       path=path.replace("\\","/")
       path=path.replace(" ","\\ ")
       path=path.replace("(","\\(")
