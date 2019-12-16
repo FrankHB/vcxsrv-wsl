@@ -1,7 +1,10 @@
 #!/bin/bash
 
-_mhmake=`which mhmake`
+export PATH=/usr/bin:/mingw64/bin:/mingw32/bin:$PATH
+
+_mhmake=`which mhmake 2> /dev/null`
 if [ ! -x "$_mhmake" ] ; then
+  echo "Executable mhmake not found, using x64 in-tree build instead."
   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   export PATH=$DIR/tools/mhmake/Release64:$PATH
 fi
@@ -13,7 +16,7 @@ source commands.sh
 rm -f commands.sh
 if [[ "$MHMAKECONF" == "" ]] ; then
   export MHMAKECONF=`cygpath -w $DIR`
-  export PYTHON3=c:\\Python3\\python.exe
+  export PYTHON3=python3
 fi
 
 export IS64=$1
