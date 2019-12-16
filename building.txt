@@ -1,10 +1,13 @@
 Prerequisits:
 - Visual Studio 2019 Community Edition
 - MSYS2
--- pacman -S nasm flex bison python2 python3 python3-pip gperf gcc libcrypt-devel libxml2-devel libxslt-devel
+-- pacman -S nasm flex bison python2 python3 python3-pip gperf gcc libcrypt-devel libxml2-devel libxslt-devel --needed
 -- CC=gcc C_INCLUDE_PATH=/usr/include/libxml2 pip3 install lxml
 -- pip3 install mako
-- To build the installer: nsis (you need "Language Files" and "Plugins")
+- To build the installer: nsis (you need "Language Files" and "Plugins"), opt-in with one of the following MSYS2 packages:
+-- pacman -S mingw-w64-x86_64-nsis --needed
+-- pacman -S mingw-w64-i686-nsis --needed
 
 Run buildall.sh 1 8 to build the 64-bit version and buildall.sh 0 8 for the 32-bit.
-(The second number on the command line is the number of parallel processes to use)
+(The second number on the command line is the number of parallel processes to use.)
+
